@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from operator import itemgetter
 import json
 import csv
+import subprocess
 
 path = os.getcwd()
 DSVERIFY_PATH = "/home/maria/dsverifier/./dsverifier"
@@ -57,51 +58,31 @@ def menu():
 
                                                 for one_unc2 in one_unc2_list:
                                                         path_one_unc2 = path_bit2+"/"+ one_unc2
-                            
-                                                        if os.path.isdir(path_one_unc2):
-                                                                arq_input =  path_one_unc2 + "/test-case-"+str(case)+"/"+"input.c"
-                                                                arq_output_name = "test-case-"+str(case)+"_SCL_"+bit+"Bits-"+bit2+"-U00_ESBMC_"+directory+"_resultado_21_08.txt
-                                                                print(arq_input)
-                                                                comand = DSVERIFY_PATH+" "+os.path.join(home, arq_input+" "+options+" > "+   os.path.join(home+"/"+output_directory, arq_output_name)
+                                                        input_files_dir =  path_one_unc2 + "/test-case-"+str(case)
+                                                        inputs_file_list = os.listdir(input_files_dir)
+                                                
+                                                        for inputs_file in inputs_file_list:
+                                                                if inputs_file != ".DS-Store":
+                                                                        arq_input =  input_files_dir + "/test-case-"+str(case)+"/"+inputs_file
+                                                                        arq_output_name = "test-case-"+str(case)+"_SCL_"+bit+"Bits-"+bit2+"-"+uncert+"_"+inputs_file+"_21_08.txt"
+                                                                        print(arq_input)
+                                                                        print(arq_output_name)
+                                                                        comand = DSVERIFY_PATH+" "+os.path.join(home, arq_input+" "+options+" > "+   os.path.join(home+"/"+output_directory, arq_output_name)
 
-                               
-    
-        for directory in directories_list:
-            if(directory != ".DS_Store"):
-                print("Diretorio: ", directory)           
+                                                                        try:
+                                                                                #inicilize process
+                                                                                probe = subprocess.Popen((comand).split(), stdout=subprocess.PIPE)
+                                                                                output, err = probe.communicate()
+                                                                             
+                                                                        if err:
+                                                                                print("Error")
+                                                                                break
+                                                                        else:
+                                                                                print("Process Initiate!")
 
-
-
-
-
-
-
-
-
-
-
-                directory_path = os.path.join(path+"/"+results_directory, directory)
-                
-                
-                params.append((linha1))
-                params.append((linha2))
-                
 
         print("Finish")
             
             
 if __name__ == '__main__':
-    menu()
-
-try:
-        #Execute FFMPEG command SEGMENTER
-        probe = subprocess.Popen((ffmpegcmd_segm).split(), stdout=subprocess.PIPE)
-        output, err = probe.communicate()
-        if not err:
-            return True
-        print (err)
-    except:
-        return False
-    else:
-        return True
-    
+    menu()    
