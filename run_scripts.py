@@ -14,14 +14,8 @@ path = os.getcwd()
 DSVERIFY_PATH = "/home/maria/dsverifier/./dsverifier"
 options = "--property STABILITY_CLOSED_LOOP --bmc ESBMC --realization DFI --connection-mode FEEDBACK --x-size 10 --timeout 518400"
 results_output_directory = "newresultados_stability"
-home = "/home/maria/"
+home = "/home/maria/scripts_doc"
 #DSN = "cruise"
-
-
- 
-def write_results(outfile_path, params):
-    
-    
 
 def menu():
 
@@ -46,11 +40,11 @@ def menu():
         for case in cases:       
                 for bit in bits:
                         for one_uncert in uncert:
-                                path_unc = os.path.join(home_path+"/"+str(bit)+"-bits", one_uncert)
+                                path_unc = os.path.join(output_directory+"/"+str(bit), one_uncert)
                                 bits2_list = os.listdir(path_unc)
                         
                                 for bit2 in bits2_list:
-                                        path_bit2 = os.path.join(home_path+"/"+str(bit)+"-bits/"+one_uncert, bit2)
+                                        path_bit2 = os.path.join(output_directory +"/"+str(bit)+one_uncert, bit2)
                     
                                         if os.path.isdir(path_bit2):
                                                 one_unc2_list = os.listdir(path_bit2)
@@ -64,12 +58,12 @@ def menu():
                                                         for inputs_file in inputs_file_list:
                                                                 if inputs_file != ".DS-Store":
                                                                         arq_input =  input_files_dir + "/test-case-"+str(case)+"/"+inputs_file
-                                                                        arq_output_name = "test-case-"+str(case)+"_SCL_"+bit+"Bits-"+bit2+"-"+uncert+"_"+inputs_file+"_21_08.txt"
-                                                                        print(arq_input)
-                                                                        print(arq_output_name)
-                                                                        comand = DSVERIFY_PATH+" "+os.path.join(home, arq_input+" "+options+" > "+   os.path.join(home+"/"+output_directory, arq_output_name)
-
-                                                                        try:
+                                                                        arq_output_name = "test-case-"+str(case)+"_SCL_"+bit+"Bits-"+bit2+"-"+uncert+"_"+inputs_file.split(".")[0]+"_21_08.txt"
+									print(arq_input)
+									print(arq_output_name)
+									comand = DSVERIFY_PATH+" "+os.path.join(home, arq_input)+" "+options+" > "+   os.path.join(home+"/"+ results_output_directory, arq_output_name)
+									print(comand)
+                                                                        '''try:
                                                                                 #inicilize process
                                                                                 probe = subprocess.Popen((comand).split(), stdout=subprocess.PIPE)
                                                                                 output, err = probe.communicate()
@@ -79,6 +73,7 @@ def menu():
                                                                                 break
                                                                         else:
                                                                                 print("Process Initiate!")
+									'''
 
 
         print("Finish")
