@@ -33,16 +33,6 @@ def extract_params(file_path):
     recall = lines[15].split(":")[1]
     n_estimators = lines[16].split(":")[1]
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     return (n_estimators, learning_rate, scores_AB, recall, precisao, tempo)
 
  
@@ -70,19 +60,18 @@ def menu():
         directories_list = os.listdir(results_directory)
         params = []
         for directory in directories_list:
-	    if(directory != ".DS_Store"):	
-                print("Diretorio: ", directory)           
+            if(directory != ".DS_Store"):
+                print("Diretorio: ", directory)
+                
                 directory_path = os.path.join(path+"/"+results_directory, directory)
-
+            
                 #file_list = os.listdir(directory_path)
-
                 #for file_name in file_list:
                 #   file_path = os.path.join(path+"/"+results_directory+"/"+directory, file_name)
                 #  print("Filename: ", file_name)
-                
+                            
                 n_estimators, learning_rate, scores_AB, recall, precisao, tempo  =  extract_params(directory_path)
-              
-
+                        
                 params.append((n_estimators, learning_rate, scores_AB, recall, precisao, tempo))
 
         outfile_path = os.path.join(path, outfile_name)

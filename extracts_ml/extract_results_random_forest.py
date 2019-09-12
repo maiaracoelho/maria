@@ -64,7 +64,7 @@ def menu():
         directories_list = os.listdir(results_directory)
         params = []
         for directory in directories_list:
-	    if(directory != ".DS_Store"):	
+            if(directory != ".DS_Store"):	
                 print("Diretorio: ", directory)           
                 directory_path = os.path.join(path+"/"+results_directory, directory)
 

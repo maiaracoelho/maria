@@ -33,10 +33,6 @@ def extract_params(file_path):
     tempo = lines[14].split(":")[1]
     recall = lines[15].split(":")[1]
         
-    
-    
-    
-    
     return (min_samples_split, scores_DT, recall, precisao, tempo)
 
  
@@ -64,7 +60,7 @@ def menu():
         directories_list = os.listdir(results_directory)
         params = []
         for directory in directories_list:
-	    if(directory != ".DS_Store"):	
+            if(directory != ".DS_Store"):
                 print("Diretorio: ", directory)           
                 directory_path = os.path.join(path+"/"+results_directory, directory)
 
@@ -76,7 +72,6 @@ def menu():
                 
                 min_samples_split, scores_DT, recall, precisao, tempo  =  extract_params(directory_path)
               
-
                 params.append((min_samples_split, scores_DT, recall, precisao, tempo))
 
         outfile_path = os.path.join(path, outfile_name)
