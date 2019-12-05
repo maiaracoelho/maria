@@ -3,6 +3,6 @@
     "path_plans": "plans",
     "bits": ["8-bits", "16-bits", "32-bits"],
     "uncert": ["DFI"],
-    "cases": [1],
+    "cases": [14],
     "output": "newStability"
 }

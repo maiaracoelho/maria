@@ -1,0 +1,11 @@
+novacamada
+<tf.Variable 'dense_41/kernel:0' shape=(100, 100) dtype=float32_ref>novacamada
+<tf.Variable 'dense_41/bias:0' shape=(100,) dtype=float32_ref>novacamada
+<tf.Variable 'dense_42/kernel:0' shape=(100, 80) dtype=float32_ref>novacamada
+<tf.Variable 'dense_42/bias:0' shape=(80,) dtype=float32_ref>novacamada
+<tf.Variable 'dense_43/kernel:0' shape=(80, 40) dtype=float32_ref>novacamada
+<tf.Variable 'dense_43/bias:0' shape=(40,) dtype=float32_ref>novacamada
+<tf.Variable 'dense_44/kernel:0' shape=(40, 20) dtype=float32_ref>novacamada
+<tf.Variable 'dense_44/bias:0' shape=(20,) dtype=float32_ref>novacamada
+<tf.Variable 'dense_45/kernel:0' shape=(20, 1) dtype=float32_ref>novacamada
+<tf.Variable 'dense_45/bias:0' shape=(1,) dtype=float32_ref>

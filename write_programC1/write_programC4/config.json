@@ -1,0 +1,8 @@
+{
+    "path_home": "stability",
+    "path_plans": "plans",
+    "bits": ["8-bits", "16-bits", "32-bits"],
+    "uncert": ["DFI"],
+    "cases": [4],
+    "output": "newStability"
+}

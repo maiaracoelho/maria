@@ -30,7 +30,7 @@ def main():
                 os.mkdir(path_new_bit)
 
             for one_uncert in uncert:
-                path_unc = os.path.join(home_path+"/"+str(bit)+"-bits", one_uncert)
+                path_unc = os.path.join(home_path+"/"+str(bit), one_uncert)
                 bits2_list = os.listdir(path_unc)
                 path_new_unc = os.path.join(path_new_bit, one_uncert)
                 if not os.path.exists(path_new_unc):
@@ -40,7 +40,7 @@ def main():
                 
                 for bit2 in bits2_list:
 
-                    path_bit2 = os.path.join(home_path+"/"+str(bit)+"-bits/"+one_uncert, bit2)
+                    path_bit2 = os.path.join(path_unc, bit2)
                     path_new_bit2 = os.path.join(path_new_unc, bit2)
                     if not os.path.exists(path_new_bit2):
                         os.mkdir(path_new_bit2)
@@ -92,7 +92,7 @@ def main():
                                         line = lines_arq[j]
 
                                         if(j==20):
-                                            print(lines_arq[j])
+                                            #print(lines_arq[j])
                                             line = "\t.b = { "
                                             for elem in range(half, len(elems)):
                                                 line += elems[elem]
@@ -103,7 +103,7 @@ def main():
                                             line += " },\n" 
 
                                         elif(j==23):
-                                            print(lines_arq[j])
+                                            #print(lines_arq[j])
                                             line = "\t.a = { "
                                             for elem in range(0, half):
                                                 line += elems[elem]
